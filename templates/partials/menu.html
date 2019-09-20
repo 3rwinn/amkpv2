@@ -1,0 +1,171 @@
+{% load static %}
+<nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-inverse" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided"
+            data-toggle="menubar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="hamburger-bar"></span>
+        </button>
+        <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse"
+            data-toggle="collapse">
+            <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+        </button>
+        <a class="navbar-brand navbar-brand-center" href="/">
+            <img class="navbar-brand-logo navbar-brand-logo-normal" src="{% static 'assets/images/amkp.jpeg' %}"
+                title="Remark">
+
+            <span class="navbar-brand-text hidden-xs-down"> AMKP</span>
+        </a>
+        <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search" data-toggle="collapse">
+            <span class="sr-only">Toggle Search</span>
+            <i class="icon wb-search" aria-hidden="true"></i>
+        </button>
+    </div>
+
+</nav>
+<div class="site-menubar site-menubar-light">
+    <div class="site-menubar-body">
+        <div>
+            <div>
+                <ul class="site-menu" data-plugin="menu">
+                    <li class="site-menu-category">General</li>
+                    <li class="site-menu-item">
+                        <a href="{% url 'index' %}">
+                            <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
+                            <span class="site-menu-title">Accueil</span>
+                        </a>
+                    </li>
+                    <li class="dropdown site-menu-item has-sub">
+                        <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
+                            <i class="site-menu-icon wb-file" aria-hidden="true"></i>
+                            <span class="site-menu-title">Actualités</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="site-menu-scroll-wrap is-list">
+                                <div>
+                                    <div>
+                                        <ul class="site-menu-sub site-menu-normal-list">
+
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="/publications/5/2">
+                                                    <span class="site-menu-title">A la une</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="/publications/5/3">
+                                                    <span class="site-menu-title">Revue de presse</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="/publications/5/4">
+                                                    <span class="site-menu-title">Evènements</span>
+                                                </a>
+                                            </li>
+
+
+
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown site-menu-item has-sub">
+                        <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
+                            <i class="site-menu-icon wb-file" aria-hidden="true"></i>
+                            <span class="site-menu-title">Agir en complémentarité</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="site-menu-scroll-wrap is-list">
+                                <div>
+                                    <div>
+                                        <ul class="site-menu-sub site-menu-normal-list">
+
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="/publications/6/2">
+                                                    <span class="site-menu-title">A la une</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="/publications/6/5">
+                                                    <span class="site-menu-title">Opinions</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="/publications/6/6">
+                                                    <span class="site-menu-title">Invités</span>
+                                                </a>
+                                            </li>
+
+
+
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown site-menu-item has-sub">
+                        <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
+                            <i class="site-menu-icon wb-file" aria-hidden="true"></i>
+                            <span class="site-menu-title">Mon engagement</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="site-menu-scroll-wrap is-list">
+                                <div>
+                                    <div>
+                                        <ul class="site-menu-sub site-menu-normal-list">
+
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="#">
+                                                    <span class="site-menu-title">Parcours professionnel</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="#">
+                                                    <span class="site-menu-title">Engagement et activités</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="#">
+                                                    <span class="site-menu-title">Institut Delayam</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="#">
+                                                    <span class="site-menu-title">Carrefour citoyen</span>
+                                                </a>
+                                            </li>
+
+
+
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="site-menu-item">
+                        <a data-toggle="modal" data-target="#contactModal" href="javascript:void(0)"
+                            data-dropdown-toggle="false">
+                            <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
+                            <span class="site-menu-title">Contacez - moi</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="page">
+
+    <div class="page-header h-300 mb-30" style="background-image: url('{% static 'assets/images/hautdepage.jpeg' %}');background-size: cover">
+        <!--<div class="text-center blue-grey-800 m-0 mt-50">
+                <div class="font-size-50 mb-30 white-800">Agir en complémentarité</div>
+                
+              </div>-->
+        <div class="overlay-panel overlay-background overlay-bottom">
+            <div class="row no-space">
+                <div class="col-sm-6">
+                    <a class="avatar avatar-lg bg-white float-left mr-20 img-bordered" href="javascript:void(0)">
+                        <img src="{% static 'assets/images/amkp.jpeg'%}" alt="">
+                    </a>
+                    <div>
+                        <div class="font-size-20">Anne-Marie Konan-Payne</div>
+                        <div class="font-size-14">CEO</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="page-content container-fluid">
+        <div style="position: fixed;bottom:20px;right:20px;z-index: 4500">
+            <div style="display: flex;flex-direction:column;">
+                <button type="button" class="btn btn-floating btn-success" data-toggle="tooltip" data-placement="right"
+                    data-trigger="hover" data-original-title="Carrefour citoyen" title="" style="margin-bottom: 20px"><i
+                        class="icon wb-users" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-floating btn-success" data-toggle="tooltip" data-placement="right"
+                    data-trigger="hover" data-original-title="Institut Delayam" title=""><i class="icon wb-user"
+                        aria-hidden="true"></i></button>
+            </div>
+
+        </div>
+
+
+        <div class="row" data-plugin="masonry">
+            {% if publications %}
+            {% for publication in publications %}
+            <div class="col-lg-4 col-sm-12 masonry-item">
+                <!-- Widget -->
+                <div class="card card-shadow">
+                    <div class="card-img-top cover overlay overlay-hover">
+                        {% if publication.type_de_media == 'IMG' %}
+                            <img class="cover-image overlay-figure overlay-scale"
+                                                        src="{{publication.media_image.url}}" alt="image">
+                                                        {% elif publication.type_de_media == "VID" %}
+                                        <iframe class="cover-iframe h-500 h-only-sm-300 h-only-xs-300" src="{{publication.media_youtube}}"></iframe>
+                                      
+                        {% endif %}
+                        
+                    </div>
+                    <div class="card-block">
+                        <h3 class="card-title">{{publication.titre}}</h3>
+                        <p class="card-text">
+                            <small>{{publication.publication_date}}</small>
+                        </p>
+                        <p class="card-text">{{publication.resume}}</p>
+                    </div>
+                    <div class="card-block clearfix">
+                        <a class="btn btn-outline btn-default card-link" href="{% url 'publication' publication.id %}">EN SAVOIR PLUS</a>
+                        
+                    </div>
+                </div>
+                <!-- End Widget -->
+                
+            </div>
+
+
+            {% endfor %}
+            {% endif %}
+ 
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

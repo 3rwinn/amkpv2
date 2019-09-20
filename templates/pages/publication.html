@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="page">
+        <div class="page-header">
+          <h1 class="page-title">A la une</h1>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./actu-alaune.html">Actualités</a></li>
+            <li class="breadcrumb-item active">A la une</li>
+          </ol>
+
+        </div> 
+  
+        <div class="page-content container-fluid">
+                <div  class="row" data-plugin="masonry">
+                        <div class="col-lg-8 col-sm-12 masonry-item" style="margin: auto">
+                                <!-- Widget -->
+                                <div class="card card-shadow">
+                                  <div class="card-img-top cover overlay overlay-hover">
+                                      {%  if publication.type_de_media == 'IMG' %}
+                                        <img class="cover-image overlay-figure overlay-scale" src="{{publication.media_image.url}}"
+                                                                            alt="">
+                                        {% elif publication.type_de_media == "VID" %}
+                                        <iframe class="cover-iframe h-500 h-only-sm-300 h-only-xs-300" src="{{publication.media_youtube}}"></iframe>
+                                      {% endif %}
+
+                                    
+                                  </div>
+                                  <div class="card-block">
+                                    <h3 class="card-title">{{publication.titre}}</h3>
+                                    <div class="slidePanel-inner">
+                                            <section class="slidePanel-inner-section">
+                                              <div class="media-header">
+                                                <!-- <div class="tags" style="margin-bottom: 20px">
+                                                  Tags:
+                                                  <a href="javascript: void(0)" class="badge badge-outline badge-default">Blog</a>
+                                                  <a href="javascript: void(0)" class="badge badge-outline badge-default">Design</a>
+                                                  <a href="javascript: void(0)" class="badge badge-outline badge-default">Cool</a>
+                                                </div> -->
+                                                
+                                              </div>
+                                              <div class="media-content">
+                                                <p>{{publication.texte}}   </p>
+                                              </div>
+                                            </section>
+                                            {% if commentaires %}
+                                            {% for commentaire in commentaires %}
+<section class="slidePanel-inner-section">
+                                              <div class="media-header">
+                                                <div class="float-right">
+                                                  <div class="time">{{commentaire.date_ajout}}</div>
+                                                </div>
+                                               
+                                                <span class="name">{{commentaire.pseudo}}</span>
+                                              </div>
+                                              <div class="media-content">
+                                                <p>{{commentaire.texte}}</p>
+                                              </div>
+                                            </section>
+                                            {% endfor%}
+                                            
+                                            {% endif %}
+                                            
+                                            <form method="POST" action="{% url 'commentaire' publication.id %}" class="slidePanel-comment">
+                                                    {% csrf_token %} 
+                                                <h3>Ajouter un commentaire</h3>
+                                                <div class="row">
+                                                    <input type="hidden" name="publication_id" value="{{publication.id}}">
+                                                    <div class="col-xl-6 form-group">
+                                                            <input type="text" class="form-control" name="pseudo" placeholder="Pseudo">
+                                                        </div>
+                                                        <div class="col-xl-6 form-group">
+                                                            <input type="email" class="form-control" name="email" placeholder="Email">
+                                                        </div>
+                                                </div>
+                                              <textarea name="texte" class="maxlength-textarea form-control mb-sm mb-20" rows="4"></textarea>
+                                              <button class="btn btn-primary" type="submit">Repondre</button>
+                                            </form>
+                                          </div>
+                                  </div>
+                                  <!-- <div class="card-block clearfix">
+                                    <div class="card-actions float-right">
+                                           
+                                      <a href="javascript:void(0)">
+                                            <i class="icon bd-twitter" aria-hidden="true"></i>
+                                  </a>
+                                      <a href="javascript:void(0)">
+                                            <i class="icon bd-facebook" aria-hidden="true"></i>
+                                  </a>
+                                      <a href="javascript:void(0)">
+                                            <i class="icon bd-dribbble" aria-hidden="true"></i>
+                                  </a>
+                                    </div>
+                                  </div> -->
+                                </div>
+                                
+                        </div>
+                        
+                        
+                       
+                </div>
+        </div>
+      </div>
+{% endblock %}
