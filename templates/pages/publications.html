@@ -17,8 +17,8 @@
                         <img src="{% static 'assets/images/amkp.jpeg'%}" alt="">
                     </a>
                     <div>
-                        <div class="font-size-20">Anne-Marie Konan-Payne</div>
-                        <div class="font-size-14">CEO</div>
+                            <div class="font-size-20">AGIR EN COMPLEMENTARITE</div>
+                            <div class="font-size-14">Anne-Marie Konan-Payne</div>
                     </div>
                 </div>
 
@@ -27,23 +27,27 @@
 
     </div>
     <div class="page-content container-fluid">
-        <div style="position: fixed;bottom:20px;right:20px;z-index: 4500">
-            <div style="display: flex;flex-direction:column;">
-                <button type="button" class="btn btn-floating btn-success" data-toggle="tooltip" data-placement="right"
-                    data-trigger="hover" data-original-title="Carrefour citoyen" title="" style="margin-bottom: 20px"><i
-                        class="icon wb-users" aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-floating btn-success" data-toggle="tooltip" data-placement="right"
-                    data-trigger="hover" data-original-title="Institut Delayam" title=""><i class="icon wb-user"
-                        aria-hidden="true"></i></button>
-            </div>
-
-        </div>
+            <div style="position: fixed;bottom:20px;right:20px;z-index: 4500">
+                    <div style="display: flex;flex-direction:column;">
+                        <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
+                            data-trigger="hover" data-original-title="Youtube" title="" style="margin-bottom: 20px"><i
+                                class="icon fa-youtube" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
+                            data-trigger="hover" data-original-title="Twitter" title="" style="margin-bottom: 20px"><i
+                                class="icon fa-twitter" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
+                            data-trigger="hover" data-original-title="Facebook" title=""><i class="icon fa-facebook"
+                                aria-hidden="true"></i></button>
+                        
+                    </div>
+        
+                </div>
 
 
         <div class="row" data-plugin="masonry">
             {% if publications %}
             {% for publication in publications %}
-            <div class="col-lg-4 col-sm-12 masonry-item">
+            <div class="col-lg-3 col-sm-12 masonry-item">
                 <!-- Widget -->
                 <div class="card card-shadow">
                     <div class="card-img-top cover overlay overlay-hover">
@@ -78,6 +82,7 @@
  
 
         </div>
+        
 
     </div>
 </div>

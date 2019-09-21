@@ -17,8 +17,9 @@
                         <img src="{% static 'assets/images/amkp.jpeg'%}" alt="">
                     </a>
                     <div>
-                        <div class="font-size-20">Anne-Marie Konan-Payne</div>
-                        <div class="font-size-14">CEO</div>
+                        
+                        <div class="font-size-20">AGIR EN COMPLEMENTARITE</div>
+                        <div class="font-size-14">Anne-Marie Konan-Payne</div>
                     </div>
                 </div>
 
@@ -29,12 +30,16 @@
     <div class="page-content container-fluid">
         <div style="position: fixed;bottom:20px;right:20px;z-index: 4500">
             <div style="display: flex;flex-direction:column;">
-                <button type="button" class="btn btn-floating btn-success" data-toggle="tooltip" data-placement="right"
-                    data-trigger="hover" data-original-title="Carrefour citoyen" title="" style="margin-bottom: 20px"><i
-                        class="icon wb-users" aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-floating btn-success" data-toggle="tooltip" data-placement="right"
-                    data-trigger="hover" data-original-title="Institut Delayam" title=""><i class="icon wb-user"
+                <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
+                    data-trigger="hover" data-original-title="Youtube" title="" style="margin-bottom: 20px"><i
+                        class="icon fa-youtube" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
+                    data-trigger="hover" data-original-title="Twitter" title="" style="margin-bottom: 20px"><i
+                        class="icon fa-twitter" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
+                    data-trigger="hover" data-original-title="Facebook" title=""><i class="icon fa-facebook"
                         aria-hidden="true"></i></button>
+                
             </div>
 
         </div>
@@ -43,7 +48,7 @@
         <div class="row" data-plugin="masonry">
             {% if publications %}
             {% for publication in publications %}
-            <div class="col-lg-4 col-sm-12 masonry-item">
+            <div class="col-lg-3 col-sm-12 masonry-item">
                 <!-- Widget -->
                 <div class="card card-shadow">
                     <div class="card-img-top cover overlay overlay-hover">
@@ -51,7 +56,8 @@
                             <img class="cover-image overlay-figure overlay-scale"
                                                         src="{{publication.media_image.url}}" alt="image">
                                                         {% elif publication.type_de_media == "VID" %}
-                                        <iframe class="cover-iframe h-500 h-only-sm-300 h-only-xs-300" src="{{publication.media_youtube}}"></iframe>
+                                                        <span>{{publication.media_youtube}}</span>
+                                        <iframe class="cover-iframe h-500 h-only-sm-300 h-only-xs-300" src="{{publication.media_video_youtube}}"></iframe>
                                       
                         {% endif %}
                         
@@ -78,7 +84,53 @@
  
 
         </div>
+        <h1>Mes tweets</h1>
+        <div class="row">
+            
+                {% if tweets %}
+                {% for tweet in tweets %}
+                <div class="col-md-4">
+                        <!-- {%if tweet.extended_entities %}
+                        <img class="card-img-top img-fluid w-full" src="{{tweet.extended_entities.media.media_url}}" alt="Card image cap"> 
+                        <h3>test</h3>
+                        {% if tweet.extended_entities.media %}
+                        il ya media
+                         {% if tweet.extended_entities.media%}
+                           test
+                         {% endif %}
+                        {% endif %}
 
+                        {%endif%} -->
+                        
+                        <div class="card card-shadow card-inverse white bg-twitter">
+                                <div class="card-block p-20 h-full">
+                                  <h3 class="white mt-0">{{tweet.text}}</h3>
+                                  <small>{{tweet.user.name}}</small>
+                                  <div class="mt-30">
+                                    <i class="icon bd-twitter font-size-26"></i>
+                                    <ul class="list-inline float-right mt-15">
+                                      <li class="list-inline-item">
+                                        <i class="icon wb-heart"></i> {{tweet.favorite_count}}
+                                      </li>
+                                      <li class="list-inline-item">
+                                        <i class="icon wb-thumb-up"></i> {{tweet.retweet_count}}
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                    </div>
+                        {% endfor %}
+                        {% endif%}
+                
+                
+                        
+                        
+                        <p>
+                            <b>{{tweet.user.name}}</b>: {{tweet.text}}
+                        </p>
+                        
+        </div>
     </div>
 </div>
 
