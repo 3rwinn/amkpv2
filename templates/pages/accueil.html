@@ -57,7 +57,7 @@
                                                         src="{{publication.media_image.url}}" alt="image">
                                                         {% elif publication.type_de_media == "VID" %}
                                                         <span>{{publication.media_youtube}}</span>
-                                        <iframe class="cover-iframe h-500 h-only-sm-300 h-only-xs-300" src="{{publication.media_video_youtube}}"></iframe>
+                                        <iframe class="cover-iframe h-500 h-only-sm-300 h-only-xs-300" src="https://www.youtube.com/embed/{{publication.media_video_youtube}}"></iframe>
                                       
                         {% endif %}
                         
