@@ -19,7 +19,7 @@ class Publication(models.Model):
             VIDEO, 'Video Youtube')]
     section = models.ForeignKey(Section, on_delete=(models.DO_NOTHING))
     rubrique = models.ForeignKey(Rubrique, on_delete=(models.DO_NOTHING))
-    titre = models.CharField(max_length=200)
+    titre = models.CharField(max_length=100)
     resume = models.TextField(blank=True)
     texte = models.TextField(blank=False)
     type_de_media = models.CharField(max_length=3,
