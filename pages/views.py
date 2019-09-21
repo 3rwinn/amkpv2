@@ -20,7 +20,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True,
     wait_on_rate_limit_notify=True)
 
 # Get last n tweets
-tweets = api.user_timeline("amkpayne", count=10)
+tweets = api.user_timeline("amkpayne", count=9)
 
 
 def index(request):
