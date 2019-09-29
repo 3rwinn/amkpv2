@@ -5,7 +5,7 @@
 {% block content %}
 <div class="page">
 
-    <div class="page-header h-300" style="background-image: url('{% static 'assets/images/hautdepage.jpeg' %}');background-size: cover">
+    <div class="page-header h-300 mb-30" style="background-image: url('{% static 'assets/images/hautdepage.jpeg' %}');background-size: cover">
         <!--<div class="text-center blue-grey-800 m-0 mt-50">
                 <div class="font-size-50 mb-30 white-800">Agir en complémentarité</div>
                 
@@ -27,7 +27,7 @@
         </div>
 
     </div>
-    <div class="page-content p-0">
+    <div class="page-content container-fluid">
         <div style="position: fixed;bottom:20px;right:20px;z-index: 4500">
             <div style="display: flex;flex-direction:column;">
                 <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
@@ -43,46 +43,53 @@
             </div>
 
         </div>
-        {% if publications %}
-         <ul class="blocks no-space blocks-100 blocks-xxl-3 blocks-lg-4">
-            {% for publication in publications %}
-            <li class="card card-inverse overlay overlay-hover">
-                    {% if publication.type_de_media == 'IMG' %}
-                     <img class="card-img overlay-scale overlay-figure" src="{{publication.media_image.url}}"
-                  alt="...">
-                  {% elif publication.type_de_media == "VID" %}
-                  <span>{{publication.media_youtube}}</span>
-  <iframe class="cover-iframe h-250 h-only-sm-300 h-only-xs-300" src="https://www.youtube.com/embed/{{publication.media_video_youtube}}"></iframe>
 
-                    {%endif %}
-               
-                <div class="card-img-overlay overlay-background overlay-background-fixed text-center vertical-align">
-                  <div class="vertical-align-middle">
-                    <div class="card-text card-divider">
-                       
-                            <span>{{publication.publication_date}}</span>
+
+        <div class="row" data-plugin="masonry">
+            {% if publications %}
+            {% for publication in publications %}
+            <div class="col-lg-3 col-sm-12 masonry-item">
+                <!-- Widget -->
+                <div class="card card-shadow">
+                    <div class="card-img-top cover overlay overlay-hover">
+                        {% if publication.type_de_media == 'IMG' %}
+                            <img class="cover-image overlay-figure overlay-scale"
+                                                        src="{{publication.media_image.url}}" alt="image">
+                                                        {% elif publication.type_de_media == "VID" %}
+                                                        <span>{{publication.media_youtube}}</span>
+                                        <iframe class="cover-iframe h-250 h-only-sm-300 h-only-xs-300" src="https://www.youtube.com/embed/{{publication.media_video_youtube}}"></iframe>
+                                      
+                        {% endif %}
                         
-                      
-                    </div> <a href="{% url 'publication' publication.id %}">
-                    <h4 class="card-title mb-20">{{publication.titre}}</h4></a>
-                  </div>
+                    </div>
+                    <div class="card-block">
+                        <h4 class="card-title">{{publication.titre}}</h4>
+                        <p class="card-text">
+                            <small>{{publication.publication_date}}</small>
+                        </p>
+                        <p class="card-text">{{publication.resume}}</p>
+                    </div>
+                    <div class="card-block clearfix">
+                        <a class="btn btn-outline btn-default card-link" href="{% url 'publication' publication.id %}">EN SAVOIR PLUS</a>
+                        
+                    </div>
                 </div>
-              </li>
+                <!-- End Widget -->
+                
+            </div>
+
 
             {% endfor %}
-       
-            
-         
-        </ul>
-        {% endif %}
+            {% endif %}
+ 
 
-        <div class="container-fluid">
-<h1>Mes tweets</h1>
+        </div>
+        <h1>Mes tweets</h1>
         <div class="row">
             
                 {% if tweets %}
                 {% for tweet in tweets %}
-                <div class="col-md-4 mb-30" >
+                <div class="col-md-4">
                         <!-- {%if tweet.extended_entities %}
                         <img class="card-img-top img-fluid w-full" src="{{tweet.extended_entities.media.media_url}}" alt="Card image cap"> 
                         <h3>test</h3>
@@ -95,7 +102,7 @@
 
                         {%endif%} -->
                         
-                        <div class="card card-shadow card-inverse white bg-twitter mb-30">
+                        <div class="card card-shadow card-inverse white bg-twitter">
                                 <div class="card-block p-20 h-full">
                                   <h3 class="white mt-0">{{tweet.text}}</h3>
                                   <small>{{tweet.user.name}}</small>
@@ -124,11 +131,6 @@
                         </p>
                         
         </div>
-
-        </div>
-
-        
-
     </div>
 </div>
 

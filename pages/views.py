@@ -25,7 +25,7 @@ tweets = api.user_timeline("amkpayne", count=9)
 
 def index(request):
     publications = Publication.objects.order_by(
-        '-publication_date').filter(est_visible=True)
+        '-publication_date').filter(est_visible=True)[:4]
     context = {'publications': publications, 'tweets': tweets}
     return render(request, 'pages/accueil.html', context)
 
