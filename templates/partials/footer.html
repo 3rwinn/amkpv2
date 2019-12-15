@@ -1,7 +1,57 @@
 {% load static %}
-<footer class="site-footer">
-    <div class="site-footer-legal">© 2019 <a href="#">AMKP</a></div>
-    <!-- <div class="site-footer-right">
-      Crafted with <i class="red-600 wb wb-heart"></i> by <a href="#">Creation Studio</a>
-    </div> -->
-</footer>
+ <footer class="page-footer">
+      <div class="container  page-footer__top">
+        <div class="col-sm-5  col-md-5">
+          <div class="page-footer__top-about">
+            <h4>AMKP.</h4>
+            <p>Téléphone: +123.456.789</p>
+            <p>Email: <a href="mailto:contact@amkp.com">contact@amkp.com</a></p>
+              <h3>NEWSLETTER</h3>
+              <div class="sidebar-widget__subscribe">
+                  {% include 'partials/alert.html' %}
+                <p>Abonnez-vous en saisissant votre email</p>
+                <form action="{% url 'newsletter' %}" method="POST">
+                    {% csrf_token %}
+                  <input type="text" name="email" placeholder="Adresse email">
+                  <input class="sidebar-widget__subscribe-submit" type="submit" value="S'abonner">
+                </form>
+              </div>
+          </div>
+
+        </div>
+        <div class="col-sm-3  col-md-3">
+          <h4>Categories</h4>
+          <nav class="page-footer__nav">
+            <ul class="page-footer__nav-items">
+              <li class="page-footer__nav-item">
+                <a href="{% url 'articles' %}">Actualité</a>
+              </li>
+              <li class="page-footer__nav-item">
+                <a href="{% url 'vision' %}">Vision</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-sm-4  col-md-4">
+            {% recent_articles %}
+        </div>
+      </div>
+      <div class="container  page-footer__bottom">
+        <div class="col-sm-8  col-md-8  page-footer__bottom-copyright">
+          <p>2019 © AMKP. LE BLOG.</p>
+        </div>
+        <div class="col-sm-4  col-md-4  page-footer__bottom-social">
+          <a href="#">
+            <svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use>
+            </svg>
+          </a>
+          <a href="#">
+            <svg>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+    </footer>

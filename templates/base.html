@@ -13,55 +13,14 @@
     <title>AMKP</title>
 
     <link rel="apple-touch-icon" href="{% static 'assets/images/apple-touch-icon.png'%}">
-    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico'%}">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{% static 'global/css/bootstrap.min.css'%}">
-    <link rel="stylesheet" href="{% static 'global/css/bootstrap-extend.min.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/site.min.css'%}">
-    <link rel="stylesheet" href="https://getbootstrapadmin.com/remark/mmenu/assets/examples/css/pages/gallery-grid.min.css">
-    <!-- Plugins -->
-    <link rel="stylesheet" href="{% static 'global/vendor/animsition/animsition.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/asscrollable/asScrollable.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/switchery/switchery.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/intro-js/introjs.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/slidepanel/slidePanel.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/flag-icon-css/flag-icon.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/chartist/chartist.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/aspieprogress/asPieProgress.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/jquery-selective/jquery-selective.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/bootstrap-datepicker/bootstrap-datepicker.css'%}">
-    <link rel="stylesheet" href="{% static 'global/vendor/asscrollable/asScrollable.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/examples/css/dashboard/team.css'%}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jquery.bxslider.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
 
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="{% static 'global/fonts/web-icons/web-icons.min.css'%}">
-    <link rel="stylesheet" href="{% static 'global/fonts/brand-icons/brand-icons.min.css'%}">
-    <link rel="stylesheet" href="{% static 'global/fonts/font-awesome/font-awesome.min.css'%}">
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
-
-    <!--[if lt IE 9]>
-    <script src="{% static 'global/vendor/html5shiv/html5shiv.min.js'%}"></script>
-    <![endif]-->
-
-    <!--[if lt IE 10]>
-    <script src="{% static 'global/vendor/media-match/media.match.min.js'%}"></script>
-    <script src="{% static 'global/vendor/respond/respond.min.js'%}"></script>
-    <![endif]-->
-
-    <!-- Scripts -->
-    <script src="{% static 'global/vendor/breakpoints/breakpoints.js'%}"></script>
-    <script>
-        Breakpoints();
-    </script>
-    <style>
-        .btn-danger {
-            background-color: #3E8EF7!important;
-            border: #3E8EF7!important;
-        }
-    </style>
 </head>
 
 <body class="animsition site-navbar-small page-gallery-grid">
@@ -76,61 +35,15 @@
     {% block content %} {% endblock %}
 
 
-    <!-- MODAL -->
-    {% include 'partials/modal.html' %}
-
     <!-- FOOTER -->
     {% include 'partials/footer.html' %}
 
     <!-- Core  -->
-    <script src="{% static 'global/vendor/babel-external-helpers/babel-external-helpers.js'%}"></script>
-    <script src="{% static 'global/vendor/jquery/jquery.js'%}"></script>
-    <script src="{% static 'global/vendor/popper-js/umd/popper.min.js'%}"></script>
-    <script src="{% static 'global/vendor/bootstrap/bootstrap.js'%}"></script>
-    <script src="{% static 'global/vendor/animsition/animsition.js'%}"></script>
-    <script src="{% static 'global/vendor/mousewheel/jquery.mousewheel.js'%}"></script>
-    <script src="{% static 'global/vendor/asscrollbar/jquery-asScrollbar.js'%}"></script>
-    <script src="{% static 'global/vendor/asscrollable/jquery-asScrollable.js'%}"></script>
-
-    <!-- Plugins -->
-    <script src="{% static 'global/vendor/switchery/switchery.js'%}"></script>
-    <script src="{% static 'global/vendor/intro-js/intro.js'%}"></script>
-    <script src="{% static 'global/vendor/screenfull/screenfull.js'%}"></script>
-    <script src="{% static 'global/vendor/slidepanel/jquery-slidePanel.js'%}"></script>
-    <script src="{% static 'global/vendor/chartist/chartist.js'%}"></script>
-    <script src="{% static 'global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js'%}"></script>
-    <script src="{% static 'global/vendor/aspieprogress/jquery-asPieProgress.js'%}"></script>
-    <script src="{% static 'global/vendor/matchheight/jquery.matchHeight-min.js'%}"></script>
-    <script src="{% static 'global/vendor/jquery-selective/jquery-selective.min.js'%}"></script>
-    <script src="{% static 'global/vendor/bootstrap-datepicker/bootstrap-datepicker.js'%}"></script>
-
-    <!-- Scripts -->
-    <script src="{% static 'global/js/Component.js'%}"></script>
-    <script src="{% static 'global/js/Plugin.js'%}"></script>
-    <script src="{% static 'global/js/Base.js'%}"></script>
-    <script src="{% static 'global/js/Config.js'%}"></script>
-
-    <script src="{% static 'assets/js/Section/Menubar.js'%}"></script>
-    <script src="{% static 'assets/js/Section/Sidebar.js'%}"></script>
-    <script src="{% static 'assets/js/Section/PageAside.js'%}"></script>
-    <script src="{% static 'assets/js/Plugin/menu.js'%}"></script>
-
-    <!-- Config -->
-    <script src="{% static 'global/js/config/colors.js'%}"></script>
-    <script src="{% static 'assets/js/config/tour.js'%}"></script>
-    <script>Config.set('assets', 'assets');</script>
-
-    <!-- Page -->
-    <script src="{% static 'assets/js/Site.js'%}"></script>
-    <script src="{% static 'global/js/Plugin/asscrollable.js'%}"></script>
-    <script src="{% static 'global/js/Plugin/slidepanel.js'%}"></script>
-    <script src="{% static 'global/js/Plugin/switchery.js'%}"></script>
-    <script src="{% static 'global/js/Plugin/matchheight.js'%}"></script>
-    <script src="{% static 'global/js/Plugin/aspieprogress.js'%}"></script>
-    <script src="{% static 'global/js/Plugin/bootstrap-datepicker.js'%}"></script>
-    <script src="{% static 'global/js/Plugin/asscrollable.js'%}"></script>
-
-    <script src="{% static 'assets/examples/js/dashboard/team.js'%}"></script>
+    <div class="content-overlay"></div>
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 

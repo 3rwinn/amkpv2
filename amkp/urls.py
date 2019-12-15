@@ -1,7 +1,3 @@
-# Python bytecode 3.7 (3394)
-# Embedded file name: E:\AMKP\amkp\amkp\urls.py
-# Size of source mod 2**32: 1152 bytes
-# Decompiled by https://python-decompiler.com
 """amkp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -23,8 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
  path('', include('pages.urls')),
- path('', include('contacts.urls')),
- path('publications/', include('publications.urls')),
- path('ase/', include('accounts.urls')),
- path('comptes/', include('comptes.urls')),
+ path('articles/', include('articles.urls')),
+ path('contact', include('contacts.urls')),
+ path('newsletter', include('newsletter.urls')),
  path('admin/', admin.site.urls)] + static((settings.MEDIA_URL), document_root=(settings.MEDIA_ROOT))

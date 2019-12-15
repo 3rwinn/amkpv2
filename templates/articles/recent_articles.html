@@ -1,0 +1,15 @@
+ <h4>ARTICLES RECENTS</h4>
+            {% for article in recent_articles %}
+                <div class="page-footer__recent-post">
+            <div class="page-footer__recent-post-info">
+              <div class="page-footer__recent-post-content">
+                <a href="{% url 'article' article.id %}">{{ article.titre }}</a>
+              </div>
+              <div class="page-footer__recent-post-date">
+                <span>{{article.date_publication}}</span>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+
+

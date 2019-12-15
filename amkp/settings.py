@@ -20,15 +20,9 @@ SECRET_KEY = '&g)*t6x%licu1#$81d+@)6f*wcmxh3@jn5ia!zmp2z(q82o@my'
 DEBUG = True
 ALLOWED_HOSTS = []
 INSTALLED_APPS = [
+    'newsletter.apps.NewsletterConfig',
     'contacts.apps.ContactsConfig',
-    'commentaires.apps.CommentairesConfig',
-    'sliders.apps.SlidersConfig',
-    'accounts.apps.AccountsConfig',
-    'sources.apps.SourcesConfig',
-    'rubriques.apps.RubriquesConfig',
-    'sections.apps.SectionsConfig',
-    'publications.apps.PublicationsConfig',
-    'comptes.apps.ComptesConfig',
+    'articles.apps.ArticlesConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,7 +51,7 @@ TEMPLATES = [
          'django.contrib.messages.context_processors.messages']}}]
 WSGI_APPLICATION = 'amkp.wsgi.application'
 DATABASES = {'default': {'ENGINE': 'django.db.backends.postgresql',
-                         'NAME': 'strataone',
+                         'NAME': 'amkpdb',
                          'USER': 'postgres',
                          'PASSWORD': 'superadmin',
                          'HOST': 'localhost'}}

@@ -1,0 +1,19 @@
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert_{{message.tags}}">
+        <div class="alert_icon">
+            <i
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            class="icon-alert"
+            {% else %}
+            class="icon-check"
+            {% endif %}
+            ></i>
+        </div>
+        <div class="alert_wrapper">
+            {{message}}
+        </div><a href="#" class="close"><i class="icon-cancel"></i></a>
+    </div>
+
+    {% endfor %}
+    {%endif%}

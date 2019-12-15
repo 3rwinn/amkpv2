@@ -3,133 +3,149 @@
 
 
 {% block content %}
-<div class="page">
+<section style="position: absolute;width: 100%">
+      <div>
+        <iframe width="100%" height="416" src="https://www.youtube.com/embed/GOeBWgdzaK4?&autoplay=1" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+    <main style="margin-top: 416px">
+      <div class="container">
+        <div class="col-md-9">
+            {% if articles %}
+                {% for article in articles %}
+                    <div class="blog-post">
+            <div class="blog-post-wrapper">
+              <div class="blog-post__info  blog-post__info--top">
+                  {% if article.categorie %}
+                   <span>
+                        <a href="#">{{article.categorie.capitalize}}</a>
+                   </span>
+                  {% else %}
+                      <span><!-- nothing --></span>
+                  {% endif %}
 
-    <div class="page-header h-300" style="background-image: url('{% static 'assets/images/hero.jpg' %}');background-size: cover; background-position: center">
-        <!--<div class="text-center blue-grey-800 m-0 mt-50">
-                <div class="font-size-50 mb-30 white-800">Agir en complémentarité</div>
-                
-              </div>-->
-        <div class="overlay-panel overlay-background overlay-bottom">
-            <div class="row no-space">
-                <div class="col-sm-6">
-                    <a class="avatar avatar-lg bg-white float-left mr-20 img-bordered" href="javascript:void(0)">
-                        <img src="{% static 'assets/images/hero.jpg'%}" alt="">
+              </div>
+              <div class="blog-post__title" >
+                <h2><a href="{% url 'article' article.id %}">
+                    {{ article.titre }}
+                </a></h2>
+              </div>
+              <div class="blog-post__info">
+                <span>{{article.date_publication}}</span>
+              </div>
+            </div>
+            <div class="blog-post__image">
+              <a href="{% url 'article' article.id %}"><img src="{{ article.image_principale.url }}" alt="Why Glass Had Been So Popular Till Now?"></a>
+            </div>
+            <div class="blog-post-wrapper">
+              <div class="blog-post__content">
+                <p>
+                   {{ article.texte }}
+                  </p>
+              </div>
+              <div class="blog-post__footer">
+                <a class="blog-post__footer-link" href="{% url 'article' article.id %}">En savoir plus</a>
+                <div class="blog-post__footer-social">
+                  <span>Partager:</span>
+                  <div class="blog-post__footer-social-icons">
+                    <a href="#">
+                      <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use>
+                      </svg>
                     </a>
-                    <div>
-                        
-                        <div class="font-size-20">ANNE-MARIE KONAN-PAYNE</div>
-                    </div>
-                </div>
+                    <a href="#">
+                      <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use>
+                      </svg>
+                    </a>
 
-            </div>
-        </div>
-
-    </div>
-    <div class="page-content p-0">
-        <div style="position: fixed;bottom:20px;right:20px;z-index: 4500">
-            <div style="display: flex;flex-direction:column;">
-                <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
-                    data-trigger="hover" data-original-title="Youtube" title="" style="margin-bottom: 20px"><i
-                        class="icon fa-youtube" aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
-                    data-trigger="hover" data-original-title="Twitter" title="" style="margin-bottom: 20px"><i
-                        class="icon fa-twitter" aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-floating btn-danger" data-toggle="tooltip" data-placement="right"
-                    data-trigger="hover" data-original-title="Facebook" title=""><i class="icon fa-facebook"
-                        aria-hidden="true"></i></button>
-                
-            </div>
-
-        </div>
-        {% if publications %}
-         <ul class="blocks no-space blocks-100 blocks-xxl-3 blocks-lg-4">
-            {% for publication in publications %}
-            <li class="card card-inverse overlay overlay-hover">
-                    {% if publication.type_de_media == 'IMG' %}
-                     <img class="card-img overlay-scale overlay-figure" src="{{publication.media_image.url}}"
-                  alt="...">
-                  {% elif publication.type_de_media == "VID" %}
-                  <span>{{publication.media_youtube}}</span>
-  <iframe class="cover-iframe h-250 h-only-sm-300 h-only-xs-300" src="https://www.youtube.com/embed/{{publication.media_video_youtube}}"></iframe>
-
-                    {%endif %}
-               
-                <div class="card-img-overlay overlay-background overlay-background-fixed text-center vertical-align">
-                  <div class="vertical-align-middle">
-                    <div class="card-text card-divider">
-                       
-                            <span>{{publication.publication_date}}</span>
-                        
-                      
-                    </div> <a href="{% url 'publication' publication.id %}">
-                    <h4 class="card-title mb-20">{{publication.titre}}</h4></a>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+                {% endfor %}
+                {% else %}
+                <h3>Aucun article pour le momemt</h3>
+
+            {% endif %}
+            {% if articles.has_other_pages %}
+                <nav class="blog-pagination">
+            <ul class="blog-pagination__items">
+                {% if articles.has_previous %}
+                     <li class="blog-pagination__item">
+                        <a href="?page={{ articles.previous_page_number }}">Page précédente</a>
+                    </li>
+                {% endif %}
+                {% for i in articles.paginator.page_range %}
+                    {% if articles.number == i %}
+                        <li class="blog-pagination__item  blog-pagination__item--active">
+                            <a>{{ i }}</a>
+                        </li>
+                        {% else %}
+                        <li class="blog-pagination__item">
+                            <a href="?page={{i}}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+                {% if articles.has_next %}
+                     <li class="blog-pagination__item">
+                <a href="?page={{ articles.next_page_number }}">Page suivante</a>
               </li>
 
-            {% endfor %}
-       
-            
-         
-        </ul>
-        {% endif %}
+                {% endif %}
 
-        <div class="container-fluid">
-<h1>Mes tweets</h1>
-        <div class="row">
-            
-                {% if tweets %}
-                {% for tweet in tweets %}
-                <div class="col-md-4 mb-30" >
-                        <!-- {%if tweet.extended_entities %}
-                        <img class="card-img-top img-fluid w-full" src="{{tweet.extended_entities.media.media_url}}" alt="Card image cap"> 
-                        <h3>test</h3>
-                        {% if tweet.extended_entities.media %}
-                        il ya media
-                         {% if tweet.extended_entities.media%}
-                           test
-                         {% endif %}
-                        {% endif %}
 
-                        {%endif%} -->
-                        
-                        <div class="card card-shadow card-inverse white bg-twitter mb-30">
-                                <div class="card-block p-20 h-full">
-                                  <h3 class="white mt-0">{{tweet.text}}</h3>
-                                  <small>{{tweet.user.name}}</small>
-                                  <div class="mt-30">
-                                    <i class="icon bd-twitter font-size-26"></i>
-                                    <ul class="list-inline float-right mt-15">
-                                      <li class="list-inline-item">
-                                        <i class="icon wb-heart"></i> {{tweet.favorite_count}}
-                                      </li>
-                                      <li class="list-inline-item">
-                                        <i class="icon wb-thumb-up"></i> {{tweet.retweet_count}}
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                    </div>
-                        {% endfor %}
-                        {% endif%}
-                
-                
-                        
-                        
-                        <p>
-                            <b>{{tweet.user.name}}</b>: {{tweet.text}}
-                        </p>
-                        
-        </div>
+            </ul>
+          </nav>
+
+
+            {% endif %}
 
         </div>
+        <div class="col-md-3  sidebar  sidebar--right">
+          <div class="sidebar-widget" style="margin-top: 20px">
+            <h3>A propos de moi</h3>
+            <div class="sidebar-widget__about-me">
+              <div class="sidebar-widget__about-me-image">
+                <img src="{% static 'img/about-me.jpg' %}" alt="About Me">
+              </div>
+              <p>
+                  Anne Marie Konan Payne est née le 09 Juillet 1962. Elle a commencé sa carrière au sein de la Société d’exploitation des biens immobiliers avant ce créer le cabinet de conseil Pluricom qu’elle dirigea de 1994 à 2004.
+              </p>
+              <span class="sidebar-widget__about-me-link">
+                <a href="{% url 'about' %}">En savoir plus</a>
+              </span>
+            </div>
+          </div>
+          <div class="sidebar-widget">
+            <h3>Suivez Moi</h3>
+            <div class="sidebar-widget__follow-me">
+              <div class="sidebar-widget__follow-me-icons">
+                <a href="#">
+                  <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use>
+                  </svg>
+                </a>
+                <a href="#">
+                  <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use>
+                  </svg>
+                </a>
 
-        
+              </div>
+            </div>
+          </div>
 
-    </div>
-</div>
 
+
+          <div class="sidebar-widget">
+              <a class="twitter-timeline" data-lang="fr" data-height="420" href="https://twitter.com/amkpayne?ref_src=twsrc%5Etfw">Tweets by amkpayne</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+        </div>
+      </div>
+    </main>
 
 {% endblock %}

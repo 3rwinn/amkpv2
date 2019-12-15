@@ -6,4 +6,6 @@ from django.urls import path
 from . import views
 urlpatterns = [
  path('', (views.index), name='index'),
- path('agirencomplementarite', (views.agirencomp), name='agirencomp')]
+ path('about', views.about, name='about'),
+ #path('agirencomplementarite', (views.agirencomp), name='agirencomp')
+]

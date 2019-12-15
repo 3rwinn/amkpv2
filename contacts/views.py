@@ -13,10 +13,13 @@ def contact(request):
         adresse_email = request.POST['adresse_email']
         sujet = request.POST['sujet']
         texte = request.POST['texte']
+
         contact = Contact(nom_complet=nom_complet, adresse_email=adresse_email,
                           sujet=sujet,
                           texte=texte)
         contact.save()
-        messages.success(
-            request, 'Votre demande de contact a bien été envoyé.')
-        return redirect('/')
+
+        messages.success(request, "Message bien enregistrer, merci.")
+        return redirect('/contact')
+    else:
+        return render(request, 'pages/contact.html')

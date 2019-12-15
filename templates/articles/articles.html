@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+      <main>
+      <div class="container">
+        <div class="col-md-12  container--list">
+          <div class="category-title">
+            <h1>{% if '/articles/vision' == request.path %} Vision {% else %} Actualité {% endif %}</h1>
+          </div>
+            {% if articles %}
+                {% for article in articles %}
+                 <div class="blog-post  blog-post--list  blog-post--list--fullwidth">
+                    <div class="row">
+                      <div class="col-sm-6  col-md-6  blog-post__image">
+                        <a href="{% url 'article' article.id %}"><img src="{{article.image_principale.url}}" alt="{{article.titre}}"></a>
+                      </div>
+                      <div class="col-sm-6  col-md-6  post__list-content">
+                        <div class="blog-post__info  blog-post__info--date">
+                          <span>{{article.date_publication}}</span>
+                            {% if article.categorie %}
+                                <span><a href="#">{{article.categorie}}</a></span>
+                            {% endif %}
+                        </div>
+                        <div class="blog-post__title">
+                          <h2><a href="{% url 'article' article.id %}">{{ article.titre }}</a></h2>
+                        </div>
+                        <div class="blog-post__content">
+                          <p>{{ article.texte }}</p>
+                        </div>
+                        <div class="blog-post__footer">
+                          <a class="blog-post__footer-link" href="{% url 'article' article.id %}">En savoir plus</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            {% if articles.has_other_pages %}
+                <nav class="blog-pagination">
+            <ul class="blog-pagination__items">
+                {% if articles.has_previous %}
+                     <li class="blog-pagination__item">
+                        <a href="?page={{ articles.previous_page_number }}">Page précédente</a>
+                    </li>
+                {% endif %}
+                {% for i in articles.paginator.page_range %}
+                    {% if articles.number == i %}
+                        <li class="blog-pagination__item  blog-pagination__item--active">
+                            <a>{{ i }}</a>
+                        </li>
+                        {% else %}
+                        <li class="blog-pagination__item">
+                            <a href="?page={{i}}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+                {% if articles.has_next %}
+                     <li class="blog-pagination__item">
+                <a href="?page={{ articles.next_page_number }}">Page suivante</a>
+              </li>
+
+                {% endif %}
+
+
+            </ul>
+          </nav>
+
+
+            {% endif %}
+
+        </div>
+      </div>
+    </main>
+{% endblock %}
